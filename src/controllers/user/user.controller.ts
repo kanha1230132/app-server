@@ -77,14 +77,17 @@ export const CallToRegisterUser = async (req: Request, res: Response) => {
       }
     });
   } catch (err: any) {
-    res.status(409).send(
+    console.log("err ---------->",err.detail)
+    res.send(
       new HTTPResponse({
         statusCode: HttpStatus.CONFLICT.code,
         httpStatus: HttpStatus.CONFLICT.status,
-        message:
-          err?.code === "ER_DUP_ENTRY"
-            ? "User already exist with this email"
-            : err.message,
+        // message:
+        //   err?.code === "ER_DUP_ENTRY"
+        //     ? "User already exist with this email"
+        //     : err.message,
+            message:err.detail
+           
       })
     );
   }

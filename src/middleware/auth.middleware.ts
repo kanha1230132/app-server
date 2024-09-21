@@ -36,7 +36,7 @@ export const UserAuthenticate = (
       // Replace 'your-secret-key' with your actual secret key
       (err, payload: any) => {
         if (err) {
-          return res.status(401).send(
+          return res.send(
             new HTTPResponse({
               statusCode: HttpStatus.UN_AUTHORISED.code,
               httpStatus: HttpStatus.UN_AUTHORISED.status,
@@ -46,7 +46,8 @@ export const UserAuthenticate = (
           );
         } else {
           if (payload) {
-            const userId = payload.userid;
+            console.log("payload ------> ",payload)
+            const userId = payload.userId;
             console.log(userId, "user id from token");
             if (userId) {
               // Attach user details to the request object
@@ -75,7 +76,7 @@ export const UserAuthenticate = (
               );
             }
           } else {
-            return res.status(401).send(
+            return res.send(
               new HTTPResponse({
                 statusCode: HttpStatus.UN_AUTHORISED.code,
                 httpStatus: HttpStatus.UN_AUTHORISED.status,

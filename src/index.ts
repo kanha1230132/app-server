@@ -9,7 +9,7 @@ import { getDatabase } from "./database/initialize/init";
 
 const app = express();
 app.use(express.json());
-const EXPRESS_PORT = 4000;
+const EXPRESS_PORT = 8001;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
@@ -22,16 +22,17 @@ routes(app);
 
 
 
-// const httpServer = createServer(app);
-// const io = new Server(httpServer, { /* options */ });
+const httpServer = createServer(app);
+const io = new Server(httpServer, { /* options */ });
 
-// io.on("connection", (socket) => {
-//   console.log("socket---------->",socket)
-//   // ...
-// });
+io.on("connection", (socket) => {
+  console.log("socket---------->",socket);
+  socket.emit("Key",{message:"Hello"});
+  // ...
+});
 
 
-app.listen(EXPRESS_PORT, async () => {
+httpServer.listen(EXPRESS_PORT, async () => {
   getDatabase();
   console.log("INFO :: Webserver started on port " + EXPRESS_PORT);
 });
