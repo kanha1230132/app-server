@@ -12,5 +12,6 @@ export const PublicRoute = [
   PathName.Login,
   PathName.Register,
   PathName.RegisterSendOtp,
-  PathName.VerifyOtp
+  PathName.VerifyOtp,
+  PathName.SendMessage
 ];
