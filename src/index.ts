@@ -7,30 +7,31 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import { getDatabase } from "./database/initialize/init";
 import { handleSocketEvents } from "./services/socket";
+import { PathName } from "./router/pathName";
 
 const app = express();
 app.use(express.json());
-const EXPRESS_PORT = 8009;
+const EXPRESS_PORT = process.env.PORT || 8000;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: ["*"]
+  origin: ["http://localhost:8000"]
 }));
 app.use(UserAuthenticate);
 routes(app);
 
 
 
+
 const httpServer = createServer(app);
-const io = new Server(httpServer ,{
-  cors: {
-    origin: "*",
-  }});
 
 // Use the separate function to handle socket events
-handleSocketEvents(io);
+app.get(PathName.SendMessage,(res,req)=>{
+  const io = new Server(httpServer);
+  handleSocketEvents(io);
+});
 
 
 httpServer.listen(EXPRESS_PORT, async () => {
