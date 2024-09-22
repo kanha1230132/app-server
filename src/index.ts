@@ -10,13 +10,13 @@ import { handleSocketEvents } from "./services/socket";
 
 const app = express();
 app.use(express.json());
-const EXPRESS_PORT = 8001;
+const EXPRESS_PORT = 8009;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: ["http://localhost:3000"]
+  origin: ["*"]
 }));
 app.use(UserAuthenticate);
 routes(app);
@@ -24,7 +24,10 @@ routes(app);
 
 
 const httpServer = createServer(app);
-const io = new Server(httpServer);
+const io = new Server(httpServer ,{
+  cors: {
+    origin: "*",
+  }});
 
 // Use the separate function to handle socket events
 handleSocketEvents(io);
