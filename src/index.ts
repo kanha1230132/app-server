@@ -11,27 +11,27 @@ import { PathName } from "./router/pathName";
 
 const app = express();
 app.use(express.json());
-const EXPRESS_PORT = process.env.PORT || 8000;
+const EXPRESS_PORT =  4001;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: ["http://localhost:8000"]
+  origin: ["http://192.168.1.6:4001"]
 }));
-app.use(UserAuthenticate);
-routes(app);
-
-
-
-
 const httpServer = createServer(app);
 
+app.use(UserAuthenticate);
+routes(app);
 // Use the separate function to handle socket events
-app.get(PathName.SendMessage,(res,req)=>{
+  console.log("PathName.SendMessage --->", PathName.SendMessage)
   const io = new Server(httpServer);
   handleSocketEvents(io);
-});
+
+
+
+
+
 
 
 httpServer.listen(EXPRESS_PORT, async () => {

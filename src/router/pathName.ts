@@ -5,7 +5,7 @@ export const PathName = {
   AllUsers: `/api/${version}/manageUsers/getAllUsers`,
   RegisterSendOtp: `/api/${version}/register-send-otp`,
   VerifyOtp: `/api/${version}/verify-otp`,
-  SendMessage: `/api/${version}/send-message`,
+  SendMessage: `http://192.168.1.6:4001/api/${version}/send-message`,
 };
 
 export const PublicRoute = [
@@ -13,5 +13,6 @@ export const PublicRoute = [
   PathName.Register,
   PathName.RegisterSendOtp,
   PathName.VerifyOtp,
-  PathName.SendMessage
+  PathName.SendMessage,
+  '/socket.io/'
 ];

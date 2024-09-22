@@ -15,7 +15,7 @@ export function handleSocketEvents(io: Server) {
     // Handle sending a message
     socket.on('message', (message:any) => {
       console.log(`-----${message.senderId}--------${message.message}--------> `)
-        io.timeout(5000).emit(`${message.senderId}`,message);
+        io.emit(`${message.senderId}`,message);
     });
 
     // Handle leaving a room

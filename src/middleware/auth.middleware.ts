@@ -20,7 +20,7 @@ export const UserAuthenticate = (
   }
   const token = req.headers.token;
   if (!token) {
-    console.log(`Token not found in API: ${req.path}`);
+    console.log(`Token not found in API 234: ${req.path}`);
     return res.status(401).send(
       new HTTPResponse({
         statusCode: HttpStatus.UN_AUTHORISED.code,
