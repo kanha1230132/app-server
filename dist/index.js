@@ -21,7 +21,6 @@ const http_1 = require("http");
 const socket_io_1 = require("socket.io");
 const init_1 = require("./database/initialize/init");
 const socket_1 = require("./services/socket");
-const pathName_1 = require("./router/pathName");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 const EXPRESS_PORT = 4001;
@@ -35,7 +34,6 @@ const httpServer = (0, http_1.createServer)(app);
 app.use(auth_middleware_1.UserAuthenticate);
 (0, routes_1.routes)(app);
 // Use the separate function to handle socket events
-console.log("PathName.SendMessage --->", pathName_1.PathName.SendMessage);
 const io = new socket_io_1.Server(httpServer);
 (0, socket_1.handleSocketEvents)(io);
 httpServer.listen(EXPRESS_PORT, () => __awaiter(void 0, void 0, void 0, function* () {

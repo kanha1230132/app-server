@@ -24,7 +24,6 @@ const httpServer = createServer(app);
 app.use(UserAuthenticate);
 routes(app);
 // Use the separate function to handle socket events
-  console.log("PathName.SendMessage --->", PathName.SendMessage)
   const io = new Server(httpServer);
   handleSocketEvents(io);
 

@@ -1,8 +1,10 @@
 // socketHandlers.ts
 import { Server } from 'socket.io';
+import { PathName } from '../../router';
 
 export function handleSocketEvents(io: Server) {
-  io.on('connection', (socket) => {
+  const chatNamespace = io.of('/chat');
+  chatNamespace.on('connection', (socket) => {
     console.log(`New client connected: ${socket.id}`);
 
     // Handle joining a room

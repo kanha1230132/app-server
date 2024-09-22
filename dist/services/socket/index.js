@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleSocketEvents = void 0;
 function handleSocketEvents(io) {
-    io.on('connection', (socket) => {
+    const chatNamespace = io.of('/chat');
+    chatNamespace.on('connection', (socket) => {
         console.log(`New client connected: ${socket.id}`);
         // Handle joining a room
         socket.on('joinRoom', (room) => {
