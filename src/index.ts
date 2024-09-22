@@ -10,13 +10,13 @@ import { handleSocketEvents } from "./services/socket";
 
 const app = express();
 app.use(express.json());
-const EXPRESS_PORT = 8006;
+const EXPRESS_PORT = 8001;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: ["https://app-server-omega.vercel.app"]
+  origin: ["http://localhost:3000"]
 }));
 app.use(UserAuthenticate);
 routes(app);
