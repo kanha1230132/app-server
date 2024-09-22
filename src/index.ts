@@ -14,10 +14,10 @@ const EXPRESS_PORT = 8001;
 
 // Use cookie-parser middleware
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: ["https://app-server-omega.vercel.app"]
-}));
+// app.use(cors({
+//   credentials: true,
+//   origin: ["https://app-server-omega.vercel.app"]
+// }));
 app.use(UserAuthenticate);
 routes(app);
 
