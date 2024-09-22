@@ -48,7 +48,8 @@ export const CallToLoginUser = (req: Request, res: Response) => {
                       statusCode: HttpStatus.OK.code,
                       httpStatus: HttpStatus.OK.status,
                       message: "User Successfuly Login",
-                      data: { token },
+                      data: {  userData: response,
+                        token, },
                     })
                   );
               }

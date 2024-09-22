@@ -6,6 +6,7 @@ import {UserAuthenticate} from './middleware/auth.middleware'
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { getDatabase } from "./database/initialize/init";
+import { handleSocketEvents } from "./services/socket";
 
 const app = express();
 app.use(express.json());
@@ -23,13 +24,10 @@ routes(app);
 
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, { /* options */ });
+const io = new Server(httpServer);
 
-io.on("connection", (socket) => {
-  console.log("socket---------->",socket);
-  socket.emit("Key",{message:"Hello"});
-  // ...
-});
+// Use the separate function to handle socket events
+handleSocketEvents(io);
 
 
 httpServer.listen(EXPRESS_PORT, async () => {
