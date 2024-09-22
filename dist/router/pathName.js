@@ -9,11 +9,12 @@ exports.PathName = {
     RegisterSendOtp: `/api/${version}/register-send-otp`,
     VerifyOtp: `/api/${version}/verify-otp`,
     SendMessage: `/api/${version}/send-message`,
+    SocketPath: `/socket.io/`
 };
 exports.PublicRoute = [
     exports.PathName.Login,
     exports.PathName.Register,
     exports.PathName.RegisterSendOtp,
     exports.PathName.VerifyOtp,
-    '/socket.io/'
+    exports.PathName.SocketPath
 ];

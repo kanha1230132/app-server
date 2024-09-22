@@ -24,8 +24,11 @@ const httpServer = createServer(app);
 app.use(UserAuthenticate);
 routes(app);
 // Use the separate function to handle socket events
+app.get(PathName.SocketPath,()=>{
   const io = new Server(httpServer);
   handleSocketEvents(io);
+})
+
 
 
 

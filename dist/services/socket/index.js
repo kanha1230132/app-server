@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleSocketEvents = void 0;
-function handleSocketEvents(io) {
-    const chatNamespace = io.of('/chat');
+function handleSocketEvents(chatNamespace) {
+    // const chatNamespace = io.of('/chat');
     chatNamespace.on('connection', (socket) => {
         console.log(`New client connected: ${socket.id}`);
         // Handle joining a room
@@ -14,7 +14,7 @@ function handleSocketEvents(io) {
         // Handle sending a message
         socket.on('message', (message) => {
             console.log(`-----${message.senderId}--------${message.message}--------> `);
-            io.emit(`${message.senderId}`, message);
+            chatNamespace.emit(`${message.senderId}`, message);
         });
         // Handle leaving a room
         socket.on('leaveRoom', (room) => {

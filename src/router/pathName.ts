@@ -6,6 +6,7 @@ export const PathName = {
   RegisterSendOtp: `/api/${version}/register-send-otp`,
   VerifyOtp: `/api/${version}/verify-otp`,
   SendMessage: `/api/${version}/send-message`,
+  SocketPath: `/socket.io/`
 };
 
 export const PublicRoute = [
@@ -13,5 +14,5 @@ export const PublicRoute = [
   PathName.Register,
   PathName.RegisterSendOtp,
   PathName.VerifyOtp,
-  '/socket.io/'
+  PathName.SocketPath
 ];

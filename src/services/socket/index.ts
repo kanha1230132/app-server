@@ -2,8 +2,8 @@
 import { Server } from 'socket.io';
 import { PathName } from '../../router';
 
-export function handleSocketEvents(io: Server) {
-  const chatNamespace = io.of('/chat');
+export function handleSocketEvents(chatNamespace: Server) {
+  // const chatNamespace = io.of('/chat');
   chatNamespace.on('connection', (socket) => {
     console.log(`New client connected: ${socket.id}`);
 
@@ -17,7 +17,7 @@ export function handleSocketEvents(io: Server) {
     // Handle sending a message
     socket.on('message', (message:any) => {
       console.log(`-----${message.senderId}--------${message.message}--------> `)
-        io.emit(`${message.senderId}`,message);
+      chatNamespace.emit(`${message.senderId}`,message);
     });
 
     // Handle leaving a room
