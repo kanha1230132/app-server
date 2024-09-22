@@ -16,7 +16,7 @@ const EXPRESS_PORT = 8001;
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: ["http://localhost:3000"]
+  origin: ["https://app-server-omega.vercel.app"]
 }));
 app.use(UserAuthenticate);
 routes(app);
